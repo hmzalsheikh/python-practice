@@ -4,7 +4,7 @@ fruits = ["mango", "pineapple", "melon"]
 
 # For loop
 for fruit in fruits:
-    print("I like, ", fruit)
+    print("I like ", fruit)
 
 # Exercise 2 – Sum numbers in a list
 # Assign numbers list
