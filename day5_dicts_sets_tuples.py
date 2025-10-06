@@ -7,8 +7,9 @@ person = {
 }
 
 #access values
-print(person["name"])
-print(person.get("age"))
+print(person["name"]) #“Give me this key or I’ll break.”
+print(person.get("age")) 
+#“Give me this key, or if it’s missing, I’ll handle it gracefully.”
 
 # add a new key-value pair
 person["profession"] = "Developer"
@@ -49,7 +50,8 @@ print(f"The resolutions is: {width}x{height}")
 #Bonus - Convert between types
 # Convert a list to a set to remove duplicates
 numbers = [1, 2, 2, 3, 3, 3]
-unique_numbers = list(set(numbers))
+unique_numbers = list(set(numbers)) #converting a list → a set → back to a list.
+#coverting to set removes duplicates automatically
 print(unique_numbers)
 
 # Convert a tuple to a list and modify it
@@ -57,3 +59,16 @@ my_tuple = (10, 20, 30)
 my_list = list(my_tuple)
 my_list.append(40)
 print(my_list)
+
+
+profile = {
+    "name" : "Hamzeh",
+    "age" : 31,
+    "skills" : ["Python", "Git", "Python", "Cybersecurity"]
+}
+
+print(profile["name"])
+print(profile.get("city", "unknown"))
+skills = profile["skills"]
+new_list = list(set(skills))
+print("New List: ", new_list)
