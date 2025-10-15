@@ -106,3 +106,44 @@ my_car.age()
 my_car.car_info()
 my_bike.bike_info()
 my_bike.age()
+
+
+# Challenge 2
+
+class Pet:
+    def __init__(self, name, species, age):
+        self.name = name
+        self.species = species
+        self.age = age
+
+    def info(self):
+        print(f"This is {self.name}, a {self.age}-year-old {self.species}.")
+
+    def birthday(self):
+        bday = self.age + 1
+        print(f"Happy birthday {self.name}! you're now {bday} years old! 🎉")
+
+class Dog(Pet):
+    def __init__(self, name, species, age, breed):
+        super().__init__(name, species, age)
+        self.breed = breed
+
+    def bark(self):
+        print(f"woof! {self.breed}")
+
+class Cat(Pet):
+    def __init__(self, name, species, age, color):
+        super().__init__(name, species, age)
+        self.color = color
+
+    def meow(self):
+        print(f"Meow! {self.color}")
+
+my_pet = Pet("Seuss", "cat", 8)
+my_dog = Dog("Rick", "dog", 5, "🐶")
+my_cat = Cat("Seuss", "cat", 8, "🐱")
+
+my_pet.info()
+my_pet.birthday()
+my_dog.bark()
+my_cat.meow()
