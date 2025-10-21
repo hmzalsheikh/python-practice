@@ -48,6 +48,8 @@ print(account.balance)     # ✅ Updated safely
 
 # Challenge
 
+from datetime import date
+
 class FitnessTracker:
     def __init__(self, steps, distance, calories):
         self.__steps = steps
@@ -107,14 +109,63 @@ class FitnessTracker:
               f"Steps: {self.__steps}\n"
               f"Distance : {self.__distance} km\n"
               f"Calories burned : {self.__calories}")
+        
+    def ret_summary(self):
+        print(f"{date} Summary:\n"
+              f"Steps: {self.__steps}\n"
+              f"Distance : {self.__distance} km\n"
+              f"Calories burned : {self.__calories}")
+    
+
+class WeeklyTracker:
+    def __init__(self):
+        self.records = []
+
+    def add_day(self, fitness_obj):
+        """Adds one day's record to the weekly tracker."""
+        entry_date = date.today().strftime("%A, %d %b %Y")
+        self.records.append({
+            "date": entry_date,
+            "steps": fitness_obj.steps,
+            "distance": fitness_obj.distance,
+            "calories": fitness_obj.calories
+        })
+        print(f"✅ Added log for {entry_date}\n")
+
+    def weekly_summary(self):
+        """Calculates total steps, distance, and calories for the week."""
+        total_steps = sum(day["steps"] for day in self.records)
+        total_distance = sum(day["distance"] for day in self.records)
+        total_calories = sum(day["calories"] for day in self.records)
+
+        print("\n--- 🗓️ Weekly Summary ---")
+        for record in self.records:
+            print(f"{record['date']} → {record['steps']} steps, "
+                  f"{record['distance']} km, {record['calories']} cal")
+
+        print("\nTotals:")
+        print(f"Steps: {total_steps}")
+        print(f"Distance: {total_distance} km")
+        print(f"Calories: {total_calories}")
+        print("--------------------------\n")
 
 
-fitness = FitnessTracker(4000, 5, 400)
+if __name__ == "__main__":
+    # Create daily logs
+    monday = FitnessTracker(4000, 3.5, 200)
+    tuesday = FitnessTracker(7500, 6.2, 350)
+    wednesday = FitnessTracker(9000, 7.5, 420)
 
-fitness.summary()
-fitness.add_steps(200)
-fitness.add_calories(150)
-fitness.add_steps(-300)
+    # Create a weekly tracker and add days
+    week = WeeklyTracker()
+    week.add_day(monday)
+    week.add_day(tuesday)
+    week.add_day(wednesday)
+
+    # Display results
+    week.weekly_summary()
+
+
 
 
     
